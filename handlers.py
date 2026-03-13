@@ -12,8 +12,9 @@ from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
+from aiogram.enums import ChatType
 from aiogram.types import (
-    Message, CallbackQuery, ChatType, InlineKeyboardMarkup, InlineKeyboardButton
+    Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 )
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession

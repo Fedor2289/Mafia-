@@ -22,7 +22,8 @@ from typing import Any
 
 from aiogram import Bot, Router, F
 from aiogram.filters import Command
-from aiogram.types import Message, CallbackQuery, ChatType
+from aiogram.enums import ChatType
+from aiogram.types import Message, CallbackQuery
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
