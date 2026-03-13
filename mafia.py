@@ -145,7 +145,7 @@ async def _dm(bot: Bot, tg_id: int, text: str, **kwargs) -> None:
 
 # ── Lobby ──────────────────────────────────────────────────────────────────────
 
-@router.message(Command("mafia"), F.chat.type.in_({ChatType.GROUP, ChatType.SUPERGROUP}))
+@router.message(Command("mafia"), F.chat.type.in_({"group", "supergroup"}))
 async def cmd_mafia_start(message: Message, session: AsyncSession, user: User) -> None:
     existing = await _get_game(session, message.chat.id)
     if existing:
@@ -706,7 +706,7 @@ async def cb_night_action(callback: CallbackQuery, session: AsyncSession, user: 
 
 # ── /endmafia ─────────────────────────────────────────────────────────────────
 
-@router.message(Command("endmafia"), F.chat.type.in_({ChatType.GROUP, ChatType.SUPERGROUP}))
+@router.message(Command("endmafia"), F.chat.type.in_({"group", "supergroup"}))
 async def cmd_endmafia(message: Message, session: AsyncSession, user: User) -> None:
     if not user.is_admin:
         await message.answer("⛔ Только администратор может завершить игру."); return

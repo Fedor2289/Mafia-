@@ -123,12 +123,12 @@ async def cmd_clear(message: Message, session: AsyncSession, user: User) -> None
 
 # ── AI chat — private ─────────────────────────────────────────────────────────
 
-@router.message(F.text == "🤖 AI чат", F.chat.type == ChatType.PRIVATE)
+@router.message(F.text == "🤖 AI чат", F.chat.type == "private")
 async def btn_ai_chat(message: Message) -> None:
     await message.answer("Слушаю. Пиши — отвечу. Или не отвечу. Посмотрим.")
 
 
-@router.message(F.text, F.chat.type == ChatType.PRIVATE)
+@router.message(F.text, F.chat.type == "private")
 async def pm_message(message: Message, session: AsyncSession, user: User) -> None:
     text = message.text or ""
     if text.startswith("/"):
@@ -151,7 +151,7 @@ async def pm_message(message: Message, session: AsyncSession, user: User) -> Non
 
 # ── AI chat — groups ──────────────────────────────────────────────────────────
 
-@router.message(F.text, F.chat.type.in_({ChatType.GROUP, ChatType.SUPERGROUP}))
+@router.message(F.text, F.chat.type.in_({"group", "supergroup"}))
 async def group_message(message: Message, session: AsyncSession, user: User) -> None:
     text = message.text or ""
     if text.startswith("/"):
